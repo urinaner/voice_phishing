@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="experiment" style="text-align: center;">
+
+    <br>
+    <h3>
+        보이스피싱 감지
+    </h3>
+    <button id="start-recording">시작</button>
+    <button id="stop-recording" disabled>중지</button>
+
+    <button id="pause-recording" disabled>정지</button>
+    <button id="resume-recording" disabled>재개</button>
+
+</section>
+<br/>
+
+<section class="experiment" style="text-align: center;">
+    <div id="audios-container"></div>
+</section>
+
+    <div class="row">
+        <div class="col-lg-8">
+        <div class="container">
+            <div id="chat-body" class="panel panel-default">
+                <div class="panel-heading" style="color: white; background: rgb(138, 138, 138)">보이스피싱 감지</div>
+                <div id="msg-list-div" class="panel-body">
+                    <ul id="msg-list" class="list-group">
+                        {% for obj in chat %}
+                            <b>{{ obj.user }}의 통화내역</b>
+                            {% if obj.user == request.user %}
+                                <li class="text-right list-group-item">{{ obj.message }}</li>
+                            {% else %}
+                                <li class="text-left list-group-item">{{ obj.message }}</li>
+                            {% endif %}
+                        {% empty %}
+                            <li class="text-right list-group-item">음성이 아직 없습니다.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <br>
+
+            <article>
+     
+
+            
+
+        </article>
+
+        </div>
+        </div>
+    </div>
+{% endblock content %}

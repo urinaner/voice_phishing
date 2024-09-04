@@ -1,0 +1,52 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00000001893d0748, pid=73723, tid=42755
+#
+# JRE version: OpenJDK Runtime Environment Zulu15.46+17-CA (15.0.10+5) (build 15.0.10+5-MTS)
+# Java VM: OpenJDK 64-Bit Server VM Zulu15.46+17-CA (15.0.10+5-MTS, mixed mode, tiered, compressed oops, g1 gc, bsd-aarch64)
+# Problematic frame:
+# C  [libsystem_malloc.dylib+0x6748]  tiny_free_list_add_ptr+0x1ec
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://www.azul.com/support/
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dfile.encoding=UTF8 -ea -Xmx1024m 
+
+Host: MacBookAir10,1 arm64 1 MHz, 8 cores, 8G, Darwin 22.3.0
+Time: Sun Nov  5 05:33:12 2023 UTC elapsed time: 39.508023 seconds (0d 0h 0m 39s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000016e8045f0):  GCTaskThread "GC Thread#3" [stack: 0x00000002bac1c000,0x00000002bae1f000] [id=42755]
+
+Stack: [0x00000002bac1c000,0x00000002bae1f000],  sp=0x00000002bae1ebe0,  free space=2058k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libsystem_malloc.dylib+0x6748]  tiny_free_list_add_ptr+0x1ec
+C  [libsystem_malloc.dylib+0x5e9c]  tiny_free_no_lock+0x1a0
+C  [libsystem_malloc.dylib+0x5b7c]  free_tiny+0x1f0
+V  [libjvm.dylib+0x2eb0a4]  G1CodeRootSetTable::~G1CodeRootSetTable()+0x64
+V  [libjvm.dylib+0x2eb9b4]  G1CodeRootSet::clear()+0x1c
+V  [libjvm.dylib+0x3acdb8]  HeapRegionRemSet::clear_locked(bool)+0x20
+V  [libjvm.dylib+0x3acd84]  HeapRegionRemSet::clear(bool)+0x30
+V  [libjvm.dylib+0x31a3bc]  G1FullGCPrepareTask::G1CalculatePointersClosure::do_heap_region(HeapRegion*)+0xf0
+V  [libjvm.dylib+0x3aaf74]  HeapRegionManager::par_iterate(HeapRegionClosure*, HeapRegionClaimer*, unsigned int) const+0xb4
+V  [libjvm.dylib+0x31a628]  G1FullGCPrepareTask::work(unsigned int)+0x6c
+V  [libjvm.dylib+0x953e08]  GangWorker::loop()+0x54
+V  [libjvm.dylib+0x8c8ba8]  Thread::call_run()+0x88
+V  [libjvm.dylib+0x711f3c]  thread_native_entry(Thread*)+0x1d0
+C  [libsystem_pthread.dylib+0x706c]  _pthread_start+0x94
+
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 2 (SEGV_ACCERR), si_addr: 0x000000016d99b810
+
+Register to memory mapping:
+
+ x0=0x000000010050c080 points into unknown readable memory: 0x0000000100000000 | 00 00 00 00 01 00 00 00
+ x1=0x000000016d973120 points into unknown readable memory: 0x0000000000000000 | 00 00 00 00 00 00 00 00
+ x2=

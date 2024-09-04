@@ -1,0 +1,55 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x000000016ddf3df8, pid=56647, tid=30211
+#
+# JRE version: OpenJDK Runtime Environment Zulu15.46+17-CA (15.0.10+5) (build 15.0.10+5-MTS)
+# Java VM: OpenJDK 64-Bit Server VM Zulu15.46+17-CA (15.0.10+5-MTS, mixed mode, tiered, compressed oops, g1 gc, bsd-aarch64)
+# Problematic frame:
+# V  [libjvm.dylib+0xcfdf8]  Arena::grow(unsigned long, AllocFailStrategy::AllocFailEnum)+0x40
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://www.azul.com/support/
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dfile.encoding=UTF8 -ea -Xmx1024m 
+
+Host: MacBookAir10,1 arm64 1 MHz, 8 cores, 8G, Darwin 22.3.0
+Time: Wed Aug 23 03:23:50 2023 UTC elapsed time: 0.538368 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000001681e1000):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=30211, stack(0x000000017fc1c000,0x000000017fe1f000)]
+
+
+Current CompileTask:
+C2:    538  853       4       jdk.internal.jimage.ImageReader$SharedImageReader::makeDirectories (54 bytes)
+
+Stack: [0x000000017fc1c000,0x000000017fe1f000],  sp=0x000000017fe1c0a0,  free space=2048k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.dylib+0xcfdf8]  Arena::grow(unsigned long, AllocFailStrategy::AllocFailEnum)+0x40
+V  [libjvm.dylib+0x692c3c]  Matcher::Label_Root(Node const*, State*, Node*, Node*&)+0x174
+V  [libjvm.dylib+0x692eb0]  Matcher::Label_Root(Node const*, State*, Node*, Node*&)+0x3e8
+V  [libjvm.dylib+0x68ed7c]  Matcher::match_tree(Node const*)+0xac
+V  [libjvm.dylib+0x68eb5c]  Matcher::xform(Node*, int)+0x63c
+V  [libjvm.dylib+0x68da44]  Matcher::match()+0x78c
+V  [libjvm.dylib+0x22b63c]  Compile::Code_Gen()+0x9c
+V  [libjvm.dylib+0x228ab0]  Compile::Compile(ciEnv*, ciMethod*, int, bool, bool, bool, DirectiveSet*)+0xbfc
+V  [libjvm.dylib+0x1a0004]  C2Compiler::compile_method(ciEnv*, ciMethod*, int, DirectiveSet*)+0xc8
+V  [libjvm.dylib+0x23a130]  CompileBroker::invoke_compiler_on_method(CompileTask*)+0x50c
+V  [libjvm.dylib+0x239b94]  CompileBroker::compiler_thread_loop()+0x448
+V  [libjvm.dylib+0x8cb6ac]  JavaThread::thread_main_inner()+0xa0
+V  [libjvm.dylib+0x8c8ba8]  Thread::call_run()+0x88
+V  [libjvm.dylib+0x711f3c]  thread_native_entry(Thread*)+0x1d0
+C  [libsystem_pthread.dylib+0x706c]  _pthread_start+0x94
+
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 2 (SEGV_ACCERR), si_addr: 0x0000000169b49e00
+
+Register to memory mapping:
+
+ x0=
